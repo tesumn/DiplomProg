@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:DiplomProg.ViewModels"
+             mc:Ignorable="d"
+             d:DesignWidth="800"
+             d:DesignHeight="450"
+             x:DataType="vm:EmployeesPageViewModel"
+             x:Class="DiplomProg.Views.EmployeesPageView">
+
+	<Grid Margin="10">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10">
+			<Button Content="Добавить" Command="{Binding AddEmployeeCommand}" Width="100"/>
+			<Button Content="Удалить" Command="{Binding DeleteEmployeeCommand}" Width="100"
+                    IsEnabled="{Binding SelectedEmployee}"/>
+		</StackPanel>
+
+		<DataGrid Grid.Row="1"
+                  ItemsSource="{Binding Employees}"
+                  SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}"
+                  AutoGenerateColumns="False">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="ФИО" Binding="{Binding FullName}" Width="*"/>
+				<DataGridTextColumn Header="Должность" Binding="{Binding Position}" Width="150"/>
+				<DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" Width="150"/>
+			</DataGrid.Columns>
+		</DataGrid>
+	</Grid>
+</UserControl>

@@ -1,0 +1,69 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:DiplomProg.ViewModels"
+             mc:Ignorable="d"
+             d:DesignWidth="800"
+             d:DesignHeight="450"
+             x:DataType="vm:ClientsPageViewModel"
+             x:Class="DiplomProg.Views.ClientsPageView">
+
+	<Grid Margin="10">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<!-- Панель управления -->
+		<StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10">
+			<Button Content="Добавить" Command="{Binding AddClientCommand}" Width="100"/>
+			<Button Content="Удалить" Command="{Binding DeleteClientCommand}" Width="100"
+                    IsEnabled="{Binding SelectedClient}"/>
+		</StackPanel>
+
+		<!-- Таблица клиентов -->
+		<DataGrid Grid.Row="1"
+                  ItemsSource="{Binding Clients}"
+                  SelectedItem="{Binding SelectedClient, Mode=TwoWay}"
+                  AutoGenerateColumns="False">
+			<DataGrid.Columns>
+				<!-- ФИО -->
+				<DataGridTemplateColumn Header="ФИО" Width="*">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<TextBox Text="{Binding FullName, Mode=TwoWay}" Watermark="Обязательное поле"/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+
+				<!-- Телефон -->
+				<DataGridTemplateColumn Header="Телефон" Width="150">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<TextBox Text="{Binding Phone, Mode=TwoWay}" Watermark="+7 XXX XXX-XX-XX"/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+
+				<!-- Email -->
+				<DataGridTemplateColumn Header="Email" Width="200">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<TextBox Text="{Binding Email, Mode=TwoWay}" Watermark="example@mail.com"/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+
+				<!-- Дата регистрации -->
+				<DataGridTemplateColumn Header="Дата регистрации" Width="150">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<DatePicker SelectedDate="{Binding RegistrationDate}" IsEnabled="False"/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+			</DataGrid.Columns>
+		</DataGrid>
+	</Grid>
+</UserControl>

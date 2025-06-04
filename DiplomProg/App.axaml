@@ -1,0 +1,38 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="DiplomProg.App"
+             xmlns:local="using:DiplomProg"
+             RequestedThemeVariant="Default">
+
+	<Application.DataTemplates>
+		<local:ViewLocator/>
+	</Application.DataTemplates>
+
+	<Application.Styles>
+		<FluentTheme />
+		<StyleInclude Source="Styles/DefStyle.axaml"/>
+	</Application.Styles>
+
+	<Application.Resources>
+		<SolidColorBrush x:Key="PrimaryBackgroundColor">#1F1F1F</SolidColorBrush>
+		<SolidColorBrush x:Key="BlackB">#1A1A1A</SolidColorBrush>
+		<SolidColorBrush x:Key="DragonButtonColor">#F0F0F0</SolidColorBrush>
+		<SolidColorBrush x:Key="PressActiveButton">#6D071A</SolidColorBrush>
+		<SolidColorBrush x:Key="ShBackgroundColor">#2F343B</SolidColorBrush>
+		<SolidColorBrush x:Key="ShChBackgroundColor">#5F343B</SolidColorBrush>
+		<SolidColorBrush x:Key="DragonBloodColor">#5C0000</SolidColorBrush>
+
+		<LinearGradientBrush x:Key="BackgroundGradientBlood" StartPoint="0%, 0%" EndPoint="100%, 0%">
+			<GradientStop Offset="0" Color="#4A0000"/>
+			<GradientStop Offset="1" Color="#7C0000"/>
+		</LinearGradientBrush>
+		<LinearGradientBrush x:Key="BackgroundGradientGrey" StartPoint="0%, 0%" EndPoint="100%, 0%">
+			<GradientStop Offset="0" Color="#1F1F1F"/>
+			<GradientStop Offset="1" Color="#2D2D2D"/>
+		</LinearGradientBrush>
+
+		<FontFamily x:Key="Consolas">/Assets/Fonts/Consolas.ttf#Consolas</FontFamily>
+		<FontFamily x:Key="Avalon">/Assets/Fonts/AvalonUI.ttf#Avalon_ui</FontFamily>
+		<FontFamily x:Key="Main">/Assets/Fonts/TexGyreAdventorBold.ttf#TeX Gyre Adventor</FontFamily>
+	</Application.Resources>
+</Application>

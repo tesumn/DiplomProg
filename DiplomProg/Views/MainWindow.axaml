@@ -1,0 +1,78 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:DiplomProg.ViewModels"
+		xmlns:view="using:DiplomProg.Views"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="550"
+		Width="1000" Height="550"
+        x:Class="DiplomProg.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="DiplomProg">
+
+	<Grid>
+	    <Grid Background="{DynamicResource PrimaryBackgroundColor}" ColumnDefinitions="Auto, *">
+
+			<ContentControl Grid.Column="1" Content="{Binding CurrentPage}">
+			</ContentControl>
+			
+			<Border CornerRadius="0 30 30 0" Padding="10" Background="{DynamicResource BackgroundGradientBlood}" Width="{Binding SomeWidth}">
+			    <Grid RowDefinitions="*, Auto">
+				    <StackPanel Grid.Row="0" Spacing="8">
+						
+						<Image PointerPressed="Image_PointerPressed" Source="{SvgImage /Assets/LesmehLogo.svg}" Width="45" IsVisible="{Binding !SideMenu}"></Image>
+						<Image PointerPressed="Image_PointerPressed" Source="{SvgImage /Assets/LesmehIcon.svg}" Width="100" IsVisible="{Binding SideMenu}"></Image>
+
+						<Button Classes.active="{Binding HomePageIsActive}" CornerRadius="5" HorizontalAlignment="Stretch" Command="{Binding GoToHomeCommand}">
+							<StackPanel Spacing="10" Orientation="Horizontal">
+								<Image Source="{SvgImage /Assets/iconhome.svg}" Height="25" Width="25"></Image>
+								<Label Content="Главная" IsVisible="{Binding SideMenu}"></Label>
+							</StackPanel>
+						</Button>
+
+						<Button Classes.active="{Binding ClientsPageIsActive}" CornerRadius="5" HorizontalAlignment="Stretch" Command="{Binding GoToClientsCommand}">
+							<StackPanel Spacing="10" Orientation="Horizontal">
+								<Image Source="{SvgImage /Assets/iconclients.svg}" Height="25" Width="25"></Image>
+								<Label Content="Клиенты" IsVisible="{Binding SideMenu}"></Label>
+							</StackPanel>
+						</Button>
+
+						<Button Classes.active="{Binding EmployeesPageIsActive}" CornerRadius="5" HorizontalAlignment="Stretch" Command="{Binding GoToEmployeesCommand}">
+							<StackPanel Spacing="10" Orientation="Horizontal">
+								<Image Source="{SvgImage /Assets/iconemployees.svg}" Height="25" Width="25"></Image>
+								<Label Content="Сотрудники" IsVisible="{Binding SideMenu}"></Label>
+							</StackPanel>
+						</Button>
+
+						<Button Classes.active="{Binding OrdersPageIsActive}" CornerRadius="5" HorizontalAlignment="Stretch" Command="{Binding GoToOrdersCommand}">
+							<StackPanel Spacing="10" Orientation="Horizontal">
+								<Image Source="{SvgImage /Assets/iconzak.svg}" Height="25" Width="25"></Image>
+								<Label  Content="Заказы" IsVisible="{Binding SideMenu}"></Label>
+							</StackPanel>
+						</Button>
+
+						<Button Classes.active="{Binding HistoryPageIsActive}" CornerRadius="5" HorizontalAlignment="Stretch" Command="{Binding GoToHistoryCommand}">
+							<StackPanel Spacing="10" Orientation="Horizontal">
+								<Image Source="{SvgImage /Assets/iconhistory.svg}" Height="25" Width="25"></Image>
+								<Label Content="История" IsVisible="{Binding SideMenu}"></Label>
+							</StackPanel>
+						</Button>
+						
+					</StackPanel>
+					<Button Classes="transparent" Grid.Row="1" HorizontalAlignment="Stretch" Command="{Binding GoToSettingsCommand}">
+						<StackPanel Spacing="10" Orientation="Horizontal">
+							<Image Source="{SvgImage /Assets/iconsettings.svg}" Height="25" Width="25"></Image>
+							<Label Content="Настройки" IsVisible="{Binding SideMenu}"></Label>
+						</StackPanel>
+					</Button>
+			    </Grid>
+		    </Border>
+	    </Grid>
+	</Grid>
+
+	
+
+
+
+</Window>
